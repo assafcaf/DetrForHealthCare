@@ -103,6 +103,7 @@ def main(args):
     # load model
     with open(os.path.join(model_pth, model_name,'args.json'), 'r') as f:
         args1 = Namespace(**json.load(f))
+    args1['device'] = "cpu"
     model, criterion, postprocessors = build_model(args1)
 
 
