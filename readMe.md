@@ -34,7 +34,7 @@ make sure that a new directory is created under the `name_dir` with the followin
 Run `display3d.py -f <liver_X>`
 For example `display3d.py -f <liver_18>`
 
-![Example](https://github.com/assafcaf/HealthCare/blob/main/images/liver_53.gif)
+![Example](https://github.com/assafcaf/DetrForHealthCare/blob/main/images/liver_53.gif)
 ---
 
 **Training**
@@ -49,7 +49,7 @@ For more advanced parameter settings try `main.py -h`
 run `make_predict.py` with `-d <path_to_data> -m <path_to_model>`
 for example `python make_predict.py -d data -m outputs/model_X`
 
-![prediction](https://github.com/assafcaf/HealthCare/blob/main/images/prediction.png)
+![prediction](https://github.com/assafcaf/DetrForHealthCare/blob/main/images/prediction.png)
 
 
 ---
