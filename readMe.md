@@ -46,7 +46,9 @@ For more advanced parameter settings try `main.py -h`
 
 ---
 **Predictions**
-Run make_predict.py with -d <path_to_data> -url to run with our best pre-trained model. The best pre-trained model was trained without shape segmentation (so ensure build_annotations.py did not run with -s when beforehand) and its weights are stored in a Google Drive. To run with a local model run make_predict.py with -m <path_to_model>; For example python make_predict.py -d data -m outputs/model_X
+Run `make_predict.py with -d <path_to_data>` to run with our best pre-trained model. The best pre-trained model was trained without shape segmentation (so ensure `build_annotations.py` did not run with `-s` when beforehand) and its weights are stored in a Google Drive.
+To run with a local model run `make_predict.py` with `-m <path_to_model>`
+For example python make_predict.py -d data -m outputs/model_X
 
 ![prediction](https://github.com/assafcaf/DetrForHealthCare/blob/main/images/prediction.png)
 
