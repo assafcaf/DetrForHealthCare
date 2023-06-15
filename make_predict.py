@@ -9,9 +9,13 @@ import torchvision.transforms as T
 import matplotlib.patches as patches
 import random
 from argparse import Namespace
+import gdown
+import zipfile
+
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 CLASSES = ['liver', 'cancer']
+
 
 def get_args_parser():
     parser = argparse.ArgumentParser('display predictions', add_help=False)
@@ -26,6 +30,7 @@ def get_args_parser():
 
     parser.add_argument('-d', type=str, default="",
                         help="path to data directory")
+
     return parser
 
 
@@ -68,20 +73,37 @@ def add_annotation(annotations, ax):
 
 def main(args):
     # pth
-    model_pth = args.m
+    if args.m != "":
+        model_pth = args.m
+    else:
+        model_pth = os.path.join("outputs", args.m, "model_1")
+    url = "https://drive.google.com/file/d/1DgGc3VGUPFzkQPtxk6WeC3jMhW1URS4k/view?usp=drive_link"
+
+    if not os.path.isdir(model_pth):
+        os.mkdir(model_pth)
+
     ds_pth = args.d
     mode = "val"
     imgs_pth = os.path.join(ds_pth, mode)
     annotations_pth = os.path.join(ds_pth, "annotations", f"instances_{mode}.json")
+
+    # download model weights
+    if args.m == "":
+        model_name = "model_1"
+        gdown.download(url, os.path.join(model_pth, "model.zip"), quiet=False, fuzzy=True)
+        with zipfile.ZipFile(os.path.join(model_pth, "model.zip"), 'r') as zip_ref:
+            zip_ref.extractall(os.path.join(model_pth))
 
     # load annotations
     with open(annotations_pth, 'r') as f:
         data = json.load(f)
 
     # load model
-    with open(os.path.join(model_pth, "args.json"), 'r') as f:
+    with open(os.path.join(model_pth, 'args.json'), 'r') as f:
         args1 = Namespace(**json.load(f))
     model, criterion, postprocessors = build_model(args1)
+
+
     chk = torch.load(os.path.join(model_pth, "checkpoint.pth"))
     model.load_state_dict(chk["model"])
     model.eval()

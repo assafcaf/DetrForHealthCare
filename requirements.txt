@@ -13,3 +13,4 @@ pandas
 mahotas
 opencv-python
 pycocotools
+gdown
