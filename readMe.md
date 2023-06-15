@@ -31,7 +31,7 @@ make sure that a new directory is created under the `name_dir` with the followin
 ---
 **Display gif with annotations**: 
 
-Run `display3d.py -f <liver_X>`
+Run `display3d.py -r <liver_X>`
 For example `display3d.py -f <liver_18>`
 
 ![Example](https://github.com/assafcaf/DetrForHealthCare/blob/main/images/liver_53.gif)
