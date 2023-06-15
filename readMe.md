@@ -1,9 +1,10 @@
 
 
+
 # Hw 2 AI for HealthCare Detr 
 
 
-This repository contains code for training 'Detr' model to detect liver and cancer from CT imgaes, inculding the preprocess and and the building of the dataset based on [COCO](https://cocodataset.org/#home) format taken from [medicaldecathlon](https://drive.google.com/file/d/1jyVGUGyxKBXV6_9ivuZapQS8eUJXCIpu/view?usp=drive_link).
+This repository contains code for training 'Detr' model to detect liver and cancer from CT images, including the preprocess and and the building of the dataset based on [COCO](https://cocodataset.org/#home) format taken from [medicaldecathlon](https://drive.google.com/file/d/1jyVGUGyxKBXV6_9ivuZapQS8eUJXCIpu/view?usp=drive_link).
 The code for the Detr model is based on the following repo [Detr Repo](https://github.com/aivclab/detr/tree/master).
 
 ---
@@ -13,13 +14,13 @@ The code for the Detr model is based on the following repo [Detr Repo](https://g
 1. cerate new conda environment using `conda create -n <env_name> pytohn=3.9`
 2. activate env using `conda activate <env_name>`
 3. run `pip install -f requirements.txt`
-4. this repo is build under the assumption that the data files will be extructed to to repo directory
-* This instolation does not uncludes torch verssion that support cuda. If there is cude enabled card on the machine pls install the proper version of cude from here [Torch](https://pytorch.org/get-started/locally/) and run the cude with `--cuda` flag to utilize the graphic card
+4. this repo is built under the assumption that the data files will be extracted to repo directory
+* This installation does not include a torch version that supports Cuda. If there is cuda enabled card on the machine pls install the proper version of Cuda from here [Torch](https://pytorch.org/get-started/locally/) and run the cude with `--cuda` flag to utilize the graphic card
 ---
 **Building COCO dataset**: 
 
- 1. make sure that the data from [medicaldecathlon](https://drive.google.com/file/d/1jyVGUGyxKBXV6_9ivuZapQS8eUJXCIpu/view?usp=drive_link) is extructed in repo directory
- 2. run `build_annotations.py` with the `-o <name_dir>` flag for runnig without Segmentation of Multiple Targets or `-s` for running with Segmentation of Multiple Targets
+ 1. make sure that the data from [medicaldecathlon](https://drive.google.com/file/d/1jyVGUGyxKBXV6_9ivuZapQS8eUJXCIpu/view?usp=drive_link) is extracted in repo directory
+ 2. run `build_annotations.py` with the `-o <name_dir>` flag for running without Segmentation of Multiple Targets or `-s` for running with Segmentation of Multiple Targets
 
 make sure that a new directory is created under the `name_dir` with the following structure
 
@@ -38,15 +39,15 @@ For example `display3d.py -f <liver_18>`
 
 **Training**
 
-For defult parameter settings run `main.py --coco_path <data_name_dir>`  such that `<data_name_dir>` is the path to the outputs from `build_annotations.py` file.
+For default parameter settings run `main.py --coco_path <data_name_dir>`  such that `<data_name_dir>` is the path to the outputs from `build_annotations.py` file
 
-For more advansed parapeter settings try `main.py -h`
+For more advanced parameter settings try `main.py -h`
 
 
 ---
 **Predictions**
 run `make_predict.py` with `-d <path_to_data> -m <path_to_model>`
-for example `python make_predict.py -d data -m outputs/model_1`
+for example `python make_predict.py -d data -m outputs/model_X`
 
 ![prediction](https://github.com/assafcaf/HealthCare/blob/main/images/prediction.png)
 
