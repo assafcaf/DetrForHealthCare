@@ -75,8 +75,10 @@ def main(args):
     # pth
     if args.m != "":
         model_pth = args.m
+        model_name = ""
     else:
-        model_pth = os.path.join("outputs", args.m, "model_1")
+        model_name = "model_1"
+        model_pth = os.path.join("outputs", args.m)
     url = "https://drive.google.com/file/d/1DgGc3VGUPFzkQPtxk6WeC3jMhW1URS4k/view?usp=drive_link"
 
     if not os.path.isdir(model_pth):
@@ -89,7 +91,7 @@ def main(args):
 
     # download model weights
     if args.m == "":
-        model_name = "model_1"
+
         gdown.download(url, os.path.join(model_pth, "model.zip"), quiet=False, fuzzy=True)
         with zipfile.ZipFile(os.path.join(model_pth, "model.zip"), 'r') as zip_ref:
             zip_ref.extractall(os.path.join(model_pth))
@@ -99,12 +101,12 @@ def main(args):
         data = json.load(f)
 
     # load model
-    with open(os.path.join(model_pth, 'args.json'), 'r') as f:
+    with open(os.path.join(model_pth, model_name,'args.json'), 'r') as f:
         args1 = Namespace(**json.load(f))
     model, criterion, postprocessors = build_model(args1)
 
 
-    chk = torch.load(os.path.join(model_pth, "checkpoint.pth"))
+    chk = torch.load(os.path.join(model_pth, model_name,"checkpoint.pth"))
     model.load_state_dict(chk["model"])
     model.eval()
 
