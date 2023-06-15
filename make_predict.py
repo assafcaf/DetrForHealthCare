@@ -106,8 +106,8 @@ def main(args):
     args1.device = "cpu"
     model, criterion, postprocessors = build_model(args1)
 
-
-    chk = torch.load(os.path.join(model_pth, model_name,"checkpoint.pth"))
+    chk = torch.load(os.path.join(model_pth, model_name, "checkpoint.pth"),
+                     map_location=torch.device('cpu'))
     model.load_state_dict(chk["model"])
     model.eval()
 
