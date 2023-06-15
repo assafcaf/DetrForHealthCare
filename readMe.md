@@ -8,10 +8,10 @@ This repository contains code for training 'Detr' model to detect liver and canc
 The code for the Detr model is based on the following repo [Detr Repo](https://github.com/aivclab/detr/tree/master).
 
 ---
-**Instolation**: 
+**installation**: 
 
 
-1. cerate new conda environment using `conda create -n <env_name> pytohn=3.9`
+1. create new conda environment using `conda create -n <env_name> pytohn=3.9`
 2. activate env using `conda activate <env_name>`
 3. run `pip install -f requirements.txt`
 4. this repo is built under the assumption that the data files will be extracted to repo directory
@@ -31,7 +31,7 @@ make sure that a new directory is created under the `name_dir` with the followin
 ---
 **Display gif with annotations**: 
 
-Run `display3d.py -f <liver_X>`
+Run `display3d.py -r <liver_X>`
 For example `display3d.py -f <liver_18>`
 
 ![Example](https://github.com/assafcaf/DetrForHealthCare/blob/main/images/liver_53.gif)
@@ -46,7 +46,9 @@ For more advanced parameter settings try `main.py -h`
 
 ---
 **Predictions**
-run `make_predict.py` with `-d <path_to_data> -m <path_to_model>`
+run `make_predict.py` with `-d <path_to_data> -m <path_to_model> -url`
+to run with our best pre-trained, trained without shape segmentation model stored in the drive
+to run with local model don't use the `-url` flag and put the local model path in `<path_to_model`
 for example `python make_predict.py -d data -m outputs/model_X`
 
 ![prediction](https://github.com/assafcaf/DetrForHealthCare/blob/main/images/prediction.png)
