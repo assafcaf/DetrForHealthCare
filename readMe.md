@@ -8,10 +8,10 @@ This repository contains code for training 'Detr' model to detect liver and canc
 The code for the Detr model is based on the following repo [Detr Repo](https://github.com/aivclab/detr/tree/master).
 
 ---
-**Instolation**: 
+**installation**: 
 
 
-1. cerate new conda environment using `conda create -n <env_name> pytohn=3.9`
+1. create new conda environment using `conda create -n <env_name> pytohn=3.9`
 2. activate env using `conda activate <env_name>`
 3. run `pip install -f requirements.txt`
 4. this repo is built under the assumption that the data files will be extracted to repo directory
