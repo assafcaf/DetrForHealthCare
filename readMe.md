@@ -46,7 +46,9 @@ For more advanced parameter settings try `main.py -h`
 
 ---
 **Predictions**
-run `make_predict.py` with `-d <path_to_data> -m <path_to_model>`
+run `make_predict.py` with `-d <path_to_data> -m <path_to_model> -url`
+to run with our best pre-trained, trained without shape segmentation model stored in the drive
+to run with local model don't use the `-url` flag and put the local model path in `<path_to_model`
 for example `python make_predict.py -d data -m outputs/model_X`
 
 ![prediction](https://github.com/assafcaf/DetrForHealthCare/blob/main/images/prediction.png)
